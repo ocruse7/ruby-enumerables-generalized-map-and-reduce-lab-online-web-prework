@@ -1,24 +1,29 @@
-def map(s)
+def map(x)
   new = []
   i = 0
-  while i < s.length
-    new.push(yield(s[i]))
+  
+  while i < x.length
+    new.push( yield( x[i] ) )
     i += 1
   end
+  
   new
 end
 
-def reduce(s, sp=nil)
+def reduce( x, sp=nil )
+  
   if sp
     accum = sp
     i = 0
   else
-    accum = s[0]
+    accum = x[0]
     i = 1
   end
-  while i < s.length
-    accum = yield(accum, s[i])
+  
+  while i < x.length
+    accum = yield( accum, x[i] )
     i += 1
   end
+  
   accum
 end
